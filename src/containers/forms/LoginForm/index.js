@@ -1,4 +1,4 @@
-import validators, { validateFirstName, validatePassowrd } from 'C:\\Users\\Uporabnik\\Desktop\\forma\\src\\containers\\validators.js';
+import validators, { validateFirstName, validatePassowrd } from '../../validators';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';

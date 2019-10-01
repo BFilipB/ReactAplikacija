@@ -5,30 +5,46 @@ import LoginForm from '../LoginForm';
 // import Col from 'react-bootstrap/Col';
 import React, { Component }  from 'react';
 import { Form, Field } from 'react-final-form';
-import { onSubmit } from '../../validators';
+
+import { InputPassword, InputUsername, InputLastName, InputFirstName, InputEmail, SubmitButtonRegister} from '../.././../components/InputFields';
+import Button from 'react-bootstrap/Button'
+import { metaProperty } from '@babel/types';
+import { withRouter } from 'react-router-dom';
+
+
+
+
 
 class RegisterForm extends Component {
+    onSubmit(e) {
+      e.preventDefault()
+      this.props.history.push('/login');
+    }
+   
     render(){
         return (
             <div>
-            <h1>RegisterForm</h1>
+            <h1>🏁  Register Form</h1>
+            <br>
+            </br>
+            <br></br>
               <Form 
                 validate={this.formValidation}
-                onSubmit={onSubmit}
-                render= { ( { onSubmit, form, submitting, pristine, values, valid }) => (
-                  <form onSubmit={onSubmit, LoginForm}>
-                        <fieldset>
+                onSubmit={this.onSubmit.bind(this)}
+                render= { ( { onSubmit, valid }) => (
+                 
+                 <form onSubmit={this.onSubmit.bind(this), LoginForm}>
                         <Field
                         name="firstName"
-                        component={this.InputFirstName}
+                        component={InputFirstName}
                         hintText="First Name"
                         floatingLabelText="First Name"
                         validate={validateFirstName}
                         />
-
+                       
                        <Field 
                         name="lastName"
-                        component={this.InputLastName}
+                        component={InputLastName}
                         hintText="Last Name"
                         floatingLabelText="Last Name"
                         validate={validatelastName}
@@ -36,15 +52,17 @@ class RegisterForm extends Component {
 
                        <Field 
                         name="username"
-                        component={this.InputUsername}
+                        component={InputUsername}
                         hintText="UserName"
                         floatingLabelText="UserName"
                         validate={validateUsername}
-                        />
+                        secureTextEntry="true"
+                        
+                       />
 
                         <Field 
                         name="password"
-                        component={this.InputPassword}
+                        component={InputPassword}
                         hintText="Password"
                         floatingLabelText="Password"
                         validate={validatePassowrd}
@@ -52,21 +70,15 @@ class RegisterForm extends Component {
 
                         <Field 
                         name="email"
-                        component={this.InputEmail}
+                        component={InputEmail}
                         hintText="email"
                         floatingLabelText="email"
                         validate={validateEmail}
                         />
-
-                        <Field
-                        name="submitButton"
-                        component={this.SubmitButtonRegister}
-                        hintText="Submit Button"
-                        floatingLabelText="Submit Button"
-                        />
-                        </fieldset>
-                       </form>
                       
+                        <Button size="lg" type="submit">Register</Button>
+                       </form>
+                 
                     ) } />  
         
         </div> 

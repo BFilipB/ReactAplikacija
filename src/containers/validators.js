@@ -2,12 +2,10 @@ import RegisterForm from  './forms/RegisterForm';
 import LoginForm from './forms/LoginForm';
 import React from 'react';
 
-export const onSubmit = async values => {
-    window.alert(JSON.stringify(values, 0, 2))
-}
+
      
 
-const errors = {};
+var errors = {};
 const validEmailRegex = 
     RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)
   
@@ -47,42 +45,46 @@ const validEmailRegex =
 // };
 
 
-export const validateFirstName = (values) => {
-    if(values.firstName == ""){
-        errors.firstName = "Name is required";
+ export const validateFirstName = (values) => {
+    if(values == ""){
+        errors = "Name is required";
+        
      }
      return errors;
-}
+  
+ }
 
-export const validatelastName = (values) => {
-    if(values.lastName == ""){
+ export const validatelastName = (values) => {
+     if(values == ""){
         errors.lastName = "Last name is required";
      }
-     return errors;
-}
+      return errors;
+ }
 
 export const validateEmail = (values) => {
-    if(!values.validateEmail == validEmailRegex){
-        errors.firstName = "Invalid email";
+     if(values != validEmailRegex){
+         errors = "Invalid email";
      }
+      return errors;
+ }
+
+ export const validatePassowrd = (values) => {
+    if(values == ""){
+        errors = " Password is required";
+    }
+    if(values){
+        if(values.length < 8){
+            errors = "Smaller than 8 ";
+        }
+    }
      return errors;
-}
+ }
 
-export const validatePassowrd = (values) => {
-    if(values.password == ""){
-        errors.password = " Password is required";
-    }
-    else if(values.password.length < 8){
-        errors.password = "Password must be 8 charachters long";
-    }
+ export const validateUsername = (values) => {
+     if(values == ""){
+         errors  = "Username is required";
+     }
     return errors;
 }
 
-export const validateUsername = (values) => {
-    if(values.username == ""){
-        errors.username = "Username is required";
-    }
-    return errors;
-
-}
 

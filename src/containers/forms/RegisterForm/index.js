@@ -13,12 +13,14 @@ import { withRouter } from 'react-router-dom';
 
 
 class RegisterForm extends Component {
-  onSubmit(e) {
+  onSubmit(e, newPage) {
     e.preventDefault();
-    this.props.history.push('/login');
+    
+    
   }
   newPage = (newPage) => {
-    window.open('/login');
+    
+    this.props.history.push('/login');
     };
  
     render(){

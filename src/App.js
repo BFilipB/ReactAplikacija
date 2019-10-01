@@ -12,7 +12,7 @@ class App extends Component {
       
       <BrowserRouter>
       <div>
-      <Route path="/" exact component={RegisterForm} />
+      <Route path="/" exact component={RegisterForm} LoginForm={false}/>
       <Route path="/login" exact component={LoginForm} />
       </div>
       

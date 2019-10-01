@@ -5,7 +5,7 @@ import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl';
 import Container from 'react-bootstrap/Container';
 import React from 'react';
-import { validateFirstName, validatelastName, validateUsername, validatePassowrd, validateEmail } from 'C:/Users/Uporabnik/Desktop/forma/src/containers/validators.js';
+import { validateFirstName, validatelastName, validateUsername, validatePassowrd, validateEmail } from '../containers/validators';
 
 
 export const InputUsername = ({ }) => (
@@ -21,7 +21,6 @@ export const InputUsername = ({ }) => (
   </InputGroup>
 
 )
-
 export const InputPassword = ({ }) => (
     <InputGroup className="mb-4">
     

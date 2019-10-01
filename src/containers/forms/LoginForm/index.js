@@ -1,4 +1,4 @@
-import validators, { validateFirstName, validatePassowrd, validateUsername, validateEmail, validatelastName } from '../../validators';
+import validators, { validateFirstName, validatePassowrd, validateUsername, validateEmail, validatelastName } from '../../validators'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';

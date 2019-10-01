@@ -11,6 +11,8 @@ class LoginForm extends Component {
     render(){
         return(
           <div>
+
+            <script crossorigin src="..."></script>
               <h1>Login Form</h1>
               <Form 
                 validate={this.formValidation}

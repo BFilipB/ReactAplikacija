@@ -7,7 +7,7 @@ import React from 'react';
 
 var errors = {};
 const validEmailRegex = 
-    RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)
+    RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
   
 // export const formValidation = (values) => {
     
@@ -55,8 +55,8 @@ const validEmailRegex =
  }
 
  export const validatelastName = (values) => {
-     if(values == ""){
-        errors.lastName = "Last name is required";
+     if(values== ""){
+        errors= "Last name is required";
      }
       return errors;
  }
@@ -73,7 +73,7 @@ export const validateEmail = (values) => {
         errors = " Password is required";
     }
     if(values){
-        if(values.length < 8){
+        if(values < 8){
             errors = "Smaller than 8 ";
         }
     }

@@ -12,15 +12,15 @@ import { metaProperty } from '@babel/types';
 import { withRouter } from 'react-router-dom';
 
 
-
-
-
 class RegisterForm extends Component {
-    onSubmit(e) {
-      e.preventDefault()
-      this.props.history.push('/login');
-    }
-   
+  onSubmit(e) {
+    e.preventDefault();
+    this.props.history.push('/login');
+  }
+  newPage = (newPage) => {
+    window.open('/login');
+    };
+ 
     render(){
         return (
             <div>
@@ -76,7 +76,7 @@ class RegisterForm extends Component {
                         validate={validateEmail}
                         />
                       
-                        <Button size="lg" type="submit">Register</Button>
+                        <Button size="lg" type="submit" onClick={this.newPage}>Register</Button>
                        </form>
                  
                     ) } />  

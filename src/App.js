@@ -11,10 +11,10 @@ class App extends Component {
     return (
       
       <BrowserRouter>
-      <div>
-      <Route path="/" exact component={RegisterForm} LoginForm={false}/>
-      <Route path="/login" exact component={LoginForm} />
-      </div>
+      
+      <Route path="/" exact component={RegisterForm}/>
+      <Route path="/login/" exact component={LoginForm} />
+      
       
       </BrowserRouter>
       

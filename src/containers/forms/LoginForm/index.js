@@ -10,9 +10,13 @@ import Button from 'react-bootstrap/Button'
 
 class LoginForm extends Component {
   onSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
     this.props.history.push('/login');
   }
+  newPage = (newPage) => {
+    window.open('/');
+  };
+
     render(){
         return(
           <div>

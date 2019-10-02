@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import React, { Component }  from 'react';
 import { Form, Field } from 'react-final-form';
 
-import { InputUsername, InputPassword, SubmitButtonLogin } from '../../../components/InputFields';
+import {InputPassword, SubmitButtonLogin, InputField } from '../../../components/InputFields';
 import Button from 'react-bootstrap/Button'
 
 class LoginForm extends Component {
@@ -29,7 +29,7 @@ class LoginForm extends Component {
                   
                   <Field 
                     name="username"
-                    component={InputUsername}
+                    component={InputField}
                     hintText="UserName"
                     floatingLabelText="UserName"
                     // validate={validateFirstName}
@@ -37,7 +37,7 @@ class LoginForm extends Component {
 
                   <Field 
                         name="password"
-                        component={InputPassword}
+                        component={InputField}
                         hintText="Password"
                         floatingLabelText="Password"
                         // validate={validatePassowrd}

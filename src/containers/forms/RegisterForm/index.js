@@ -1,4 +1,4 @@
-import validators, { validateFirstName, validatelastName, validateUsername, validatePassowrd, validateEmail } from '../../validators';
+import validators, { validateFirstName, validatelastName, validateUsername, validatePassowrd, validateEmail, formValidation, validatePassword } from '../../validators';
 import LoginForm from '../LoginForm';
 // import Container from 'react-bootstrap/Container';
 // import Row from 'react-bootstrap/Row';
@@ -6,7 +6,7 @@ import LoginForm from '../LoginForm';
 import React, { Component }  from 'react';
 import { Form, Field } from 'react-final-form';
 
-import { InputPassword, InputUsername, InputLastName, InputFirstName, InputEmail, SubmitButtonRegister} from '../.././../components/InputFields';
+import { InputPassword, InputEmail, InputUsername, InputFirstName, InputLastName, InputField} from '../.././../components/InputFields';
 import Button from 'react-bootstrap/Button'
 import { metaProperty } from '@babel/types';
 import { withRouter } from 'react-router-dom';
@@ -14,7 +14,7 @@ import { withRouter } from 'react-router-dom';
 
 class RegisterForm extends Component {
   onSubmit(e, newPage) {
-    e.preventDefault();
+  e.preventDefault();
     
     
   }
@@ -31,51 +31,53 @@ class RegisterForm extends Component {
             </br>
             <br></br>
               <Form 
-                validate={this.formValidation}
                 onSubmit={this.onSubmit.bind(this)}
-                render= { ( { onSubmit, valid }) => (
-                 
-                 <form onSubmit={this.onSubmit.bind(this), LoginForm}>
+                render= { ( { onSubmit, form,  valid, values, input, meta }) => (
+               <form onSubmit={this.onSubmit.bind(this)}>
                         <Field
                         name="firstName"
-                        component={InputFirstName}
+                        component={InputField}
                         hintText="First Name"
                         floatingLabelText="First Name"
                         validate={validateFirstName}
+                        
+                        
+                        
                         />
-                       
+                      
                        <Field 
                         name="lastName"
-                        component={InputLastName}
+                        component={InputField}
                         hintText="Last Name"
                         floatingLabelText="Last Name"
                         validate={validatelastName}
+                       
                         />
-
+                    
                        <Field 
                         name="username"
-                        component={InputUsername}
+                        component={InputField}
                         hintText="UserName"
                         floatingLabelText="UserName"
-                        validate={validateUsername}
+                        //validate={validateUsername}
                         secureTextEntry="true"
                         
                        />
 
                         <Field 
                         name="password"
-                        component={InputPassword}
+                        component={InputField}
                         hintText="Password"
                         floatingLabelText="Password"
-                        validate={validatePassowrd}
+                        //validate={this.validatePassword}
                         />
 
                         <Field 
                         name="email"
-                        component={InputEmail}
+                        component={InputField}
                         hintText="email"
                         floatingLabelText="email"
-                        validate={validateEmail}
+                        //validate={validateEmail}
                         />
                       
                         <Button size="lg" type="submit" onClick={this.newPage}>Register</Button>

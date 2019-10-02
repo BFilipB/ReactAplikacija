@@ -3,12 +3,11 @@ import LoginForm from './forms/LoginForm';
 import React from 'react';
 
 
-     
-
 var errors = {};
-const validEmailRegex = 
-    RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
-  
+export function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
 // export const formValidation = (values) => {
     
 //   if(!values.firstName){
@@ -45,46 +44,34 @@ const validEmailRegex =
 // };
 
 
+
  export const validateFirstName = (values) => {
-    if(values == ""){
-        errors = "Name is required";
-        
-     }
-     return errors;
-  
- }
-
- export const validatelastName = (values) => {
-     if(values== ""){
-        errors= "Last name is required";
-     }
-      return errors;
- }
-
-export const validateEmail = (values) => {
-     if(values != validEmailRegex){
-         errors = "Invalid email";
-     }
-      return errors;
- }
-
- export const validatePassowrd = (values) => {
-    if(values == ""){
-        errors = " Password is required";
-    }
-    if(values){
-        if(values < 8){
-            errors = "Smaller than 8 ";
-        }
-    }
-     return errors;
- }
-
- export const validateUsername = (values) => {
-     if(values == ""){
-         errors  = "Username is required";
-     }
-    return errors;
+    if(values.firstName == ""){
+        errors.firstName = "Name is required";
+}
 }
 
+ export const validatelastName = (values) => {
+     if(values.lastName== ""){
+        errors= "Last name is required";
+     }
+      
+ }
+
+export const validatePassword = (values) => {
+    if(values.Password=""){
+        errors.Password = "Password is required";
+    }
+    if(values.Password){
+        if(values.Password.length<8){
+          errors.Password = "Password has to be atleast 8 charachters"
+        }
+    }
+}
+
+export const validateUsername = (values) => {
+     if(values.username == ""){
+         errors.username  = "Username is required";
+     }
+}
 

@@ -1,4 +1,4 @@
-import validators, { validateFirstName, validatelastName, validateUsername, validatePassowrd, validateEmail, formValidation, validatePassword } from '../../validators';
+import validators, { required, validatePasswordLength, allowedEmails  } from '../../validators';
 import LoginForm from '../LoginForm';
 // import Container from 'react-bootstrap/Container';
 // import Row from 'react-bootstrap/Row';
@@ -32,17 +32,16 @@ class RegisterForm extends Component {
             <br></br>
               <Form 
                 onSubmit={this.onSubmit.bind(this)}
-                render= { ( { onSubmit, form,  valid, values, input, meta }) => (
+                render={ ( { onSubmit, form,  valid, values, input, meta, type}) => (
                <form onSubmit={this.onSubmit.bind(this)}>
                         <Field
                         name="firstName"
                         component={InputField}
                         hintText="First Name"
                         floatingLabelText="First Name"
-                        validate={validateFirstName}
-                        
-                        
-                        
+                        onChange={(event)=>this.inputChangedHandler(event)}
+                        validate={required}
+                        type="text"
                         />
                       
                        <Field 
@@ -50,34 +49,38 @@ class RegisterForm extends Component {
                         component={InputField}
                         hintText="Last Name"
                         floatingLabelText="Last Name"
-                        validate={validatelastName}
-                       
+                        validate={required(values)}
+                        type="text"
                         />
                     
                        <Field 
                         name="username"
                         component={InputField}
                         hintText="UserName"
-                        floatingLabelText="UserName"
-                        //validate={validateUsername}
-                        secureTextEntry="true"
-                        
+                        floatingLabelText="username"
+                        validate={required(values)}
+                        type="text"
                        />
 
                         <Field 
+                        
                         name="password"
                         component={InputField}
                         hintText="Password"
                         floatingLabelText="Password"
-                        //validate={this.validatePassword}
+                        validate={required(values), validatePasswordLength(values)}
+                        type="password"
+                       
+                        
                         />
 
                         <Field 
                         name="email"
                         component={InputField}
                         hintText="email"
-                        floatingLabelText="email"
-                        //validate={validateEmail}
+                        floatingLabelText="Email"
+                        validate={required(values), allowedEmails(values)}
+                        type="email"
                         />
                       
                         <Button size="lg" type="submit" onClick={this.newPage}>Register</Button>

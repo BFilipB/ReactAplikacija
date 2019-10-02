@@ -10,21 +10,21 @@ import { Form, Field } from 'react-final-form';
 import LoginForm from '../containers/forms/LoginForm';
 import RegisterForm from '../containers/forms/RegisterForm';
 
-export const InputField = (input, meta, ...rest) => {
 
 
+
+export const InputField = (props) => {
+  console.log("PROOOPS ", props);
   return(
-    <InputGroup className="mb-4">
-    
-    <FormControl
-     hintText={meta.LoginForm}
-     
-    />
-    <InputGroup.Prepend>
-    <InputGroup.Text id="basic-addon2">{input.name}</InputGroup.Text>
-    </InputGroup.Prepend>
-    </InputGroup>
-
+  <InputGroup size="lg" className="mb-4">
+  <FormControl 
+     placeholder={props.floatingLabelText}
+     type={props.input.type}
+  />
+  <InputGroup.Prepend>
+  <InputGroup.Text id="basic-addon2" ></InputGroup.Text>
+  </InputGroup.Prepend>
+  </InputGroup>
 )}
 
 //  export const InputEmail = ({ }) => (

@@ -9,29 +9,27 @@ import {InputPassword, SubmitButtonLogin, InputField } from '../../../components
 import Button from 'react-bootstrap/Button'
 
 class LoginForm extends Component {
-  onSubmit(e) {
-    e.preventDefault();
-    this.props.history.push('/login');
+  onSubbmit(e, test) {
+   
+    window.alert("hey")
   }
-  newPage = (newPage) => {
-    window.open('/');
-  };
-
+  
+  test = () => {
+    console.log("heygggg")
+  }
     render(){
         return(
           <div>
          <h1>🏁 Login Form</h1>
               <Form 
-                validate={this.formValidation}
-                onSubmit={this.onSubmit.bind(this)}
-                render= { ( { onSubmit, form, submitting, pristine, values, valid }) => (
-                  <form onSubmit={this.onSubmit.bind(this)}>
-                  
+                onSubmit={this.onSubbmit.bind(this)}
+                render= { ( { onSubbmit, form, submitting, pristine, values, valid, e }) => (
+                  <form onSubmit={this.onSubbmit.bind(this)}>
                   <Field 
                     name="username"
                     component={InputField}
-                    hintText="UserName"
-                    floatingLabelText="UserName"
+                    hintText="username"
+                    floatingLabelText="username"
                     // validate={validateFirstName}
                     />
 
@@ -39,11 +37,12 @@ class LoginForm extends Component {
                         name="password"
                         component={InputField}
                         hintText="Password"
-                        floatingLabelText="Password"
+                        floatingLabelText="password"
+                        type="password"
                         // validate={validatePassowrd}
                   />
 
-                   <Button as="input" type="submit" value="Login" size="lg" />
+                <Button size="lg" type="submit" onClick={this.test}>Login</Button>
                   </form>
                   ) } />  
           </div>

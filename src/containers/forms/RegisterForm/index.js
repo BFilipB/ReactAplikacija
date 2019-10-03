@@ -12,18 +12,22 @@ import { metaProperty } from '@babel/types';
 import { withRouter } from 'react-router-dom';
 
 
+
+
 class RegisterForm extends Component {
-  onSubmit(e, newPage) {
-  e.preventDefault();
-    
-    
-  }
-  newPage = (newPage) => {
-    
-    this.props.history.push('/login');
-    };
- 
-    render(){
+onSubmbit(e, newPage,values) {
+  
+  console.log("Vrednosti",values);
+  
+};
+
+// newPage = (newPage) => {
+//   this.props.history.push('/login');
+// };
+
+ render(){
+  const composeValidators = (...validators) => value => validators.reduce((error, validator) => error ||  validator(value),  undefined);
+  
         return (
             <div>
             <h1>🏁  Register Form</h1>
@@ -31,66 +35,62 @@ class RegisterForm extends Component {
             </br>
             <br></br>
               <Form 
-                onSubmit={this.onSubmit.bind(this)}
-                render={ ( { onSubmit, form,  valid, values, input, meta, type}) => (
-               <form onSubmit={this.onSubmit.bind(this)}>
-                        <Field
+                onSubmit={this.onSubmbit}
+                render={ ( { handleSubmit}) => (
+               <form onSubmit={handleSubmit}>
+                       <Field
                         name="firstName"
                         component={InputField}
                         hintText="First Name"
                         floatingLabelText="First Name"
-                        onChange={(event)=>this.inputChangedHandler(event)}
                         validate={required}
                         type="text"
                         />
-                      
                        <Field 
                         name="lastName"
                         component={InputField}
                         hintText="Last Name"
                         floatingLabelText="Last Name"
-                        validate={required(values)}
+                        validate={required}
                         type="text"
                         />
-                    
                        <Field 
                         name="username"
                         component={InputField}
                         hintText="UserName"
                         floatingLabelText="username"
-                        validate={required(values)}
+                        validate={required}
                         type="text"
                        />
-
-                        <Field 
-                        
+                       <Field 
                         name="password"
                         component={InputField}
                         hintText="Password"
                         floatingLabelText="Password"
-                        validate={required(values), validatePasswordLength(values)}
+                        validate={composeValidators(required, validatePasswordLength)}
                         type="password"
-                       
-                        
                         />
-
                         <Field 
                         name="email"
                         component={InputField}
                         hintText="email"
                         floatingLabelText="Email"
-                        validate={required(values), allowedEmails(values)}
+                        validate={composeValidators(required, allowedEmails)}
                         type="email"
                         />
                       
-                        <Button size="lg" type="submit" onClick={this.newPage}>Register</Button>
+                        <Button size="lg" type="submit">Register</Button>
                        </form>
                  
                     ) } />  
         
         </div> 
-    )
+    );
+   
+    
 };
 }
+
+
 
 export default RegisterForm;

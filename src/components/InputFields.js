@@ -9,7 +9,7 @@ import { validateFirstName, validatelastName, validateUsername, validatePassowrd
 import { Form, Field } from 'react-final-form';
 import LoginForm from '../containers/forms/LoginForm';
 import RegisterForm from '../containers/forms/RegisterForm';
-
+import './InputFields.css'
 
 
 
@@ -20,10 +20,12 @@ export const InputField = (props) => {
   <FormControl 
      placeholder={props.floatingLabelText}
      type={props.input.type}
+     
+     
   />
-  <InputGroup.Prepend>
-  <InputGroup.Text id="basic-addon2" ></InputGroup.Text>
-  </InputGroup.Prepend>
+  <div className="ValidatorStyle">
+  {props.meta.error && props.meta.touched && <span>{props.meta.error}</span>}
+  </div>
   </InputGroup>
 )}
 

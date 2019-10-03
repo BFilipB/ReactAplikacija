@@ -52,23 +52,27 @@ export function validateEmail(email) {
 // }
 
 export const required = v => {
-    if(!v || v === ''){
-        return 'This field is required';
+    if(!v || v === ' '){
+        return 'This field is requireddd';
     }
     return undefined;
 }
 
 export const allowedEmails = v =>{
-    if (v === validateEmail()) {
+    if (v === validateEmail) {
         return "email is not valid";
     }
     return undefined;
 };
 
 export const validatePasswordLength = (v) => {
+         if(v){
           if(v.length<8){
           return "Password has to be atleast 8 charachters";
+          
         }
          return "Password accepted";
-};
+    }
+ };
+
 

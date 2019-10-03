@@ -4,10 +4,6 @@ import React from 'react';
 
 
 
-export function validateEmail(email) {
-    var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-}
 // export const formValidation = (values) => {
     
 //   if(!values.firstName){
@@ -58,20 +54,25 @@ export const required = v => {
     return undefined;
 }
 
-export const allowedEmails = v =>{
-    if (v === validateEmail) {
-        return "email is not valid";
-    }
-    return undefined;
-};
 
-export const validatePasswordLength = (v) => {
+
+
+export const allowedEmails = (v, whatever) =>{
+     
+    if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(v)) {
+        return  "invalid email address";
+    }
+    
+}
+
+
+export const validatePasswordLength = v => {
          if(v){
           if(v.length<8){
           return "Password has to be atleast 8 charachters";
           
         }
-         return "Password accepted";
+         
     }
  };
 

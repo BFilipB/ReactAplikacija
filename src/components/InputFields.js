@@ -5,7 +5,7 @@ import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl';
 import Container from 'react-bootstrap/Container';
 import React from 'react';
-import { validateFirstName, validatelastName, validateUsername, validatePassowrd, validateEmail } from '../containers/validators';
+import { required,  validateEmail, validatePasswordLength } from '../containers/validators';
 import { Form, Field } from 'react-final-form';
 import LoginForm from '../containers/forms/LoginForm';
 import RegisterForm from '../containers/forms/RegisterForm';
@@ -16,17 +16,21 @@ import './InputFields.css'
 export const InputField = (props) => {
   console.log("PROOOPS ", props);
   return(
-  <InputGroup size="lg" className="mb-4">
+   <div>
+  <InputGroup size="lg" className="mb-4" {...props.input}>
   <FormControl 
      placeholder={props.floatingLabelText}
      type={props.input.type}
      
      
   />
+  </InputGroup> 
   <div className="ValidatorStyle">
-  {props.meta.error && props.meta.touched && <span>{props.meta.error}</span>}
-  </div>
-  </InputGroup>
+   {props.meta.error && props.meta.touched && <span>{props.meta.error}</span>}
+  </div>  
+   </div>
+ 
+
 )}
 
 //  export const InputEmail = ({ }) => (

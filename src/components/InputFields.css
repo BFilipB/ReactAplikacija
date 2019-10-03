@@ -1,5 +1,7 @@
 .ValidatorStyle{
-  text-align: right;
+  text-align: bottom;
+  margin-left:4px;
   color: red;
   text-emphasis-color: red;
+  
 }

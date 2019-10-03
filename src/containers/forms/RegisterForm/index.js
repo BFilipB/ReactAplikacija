@@ -1,4 +1,4 @@
-import validators, { required, validatePasswordLength, allowedEmails  } from '../../validators';
+import validators, { required, validatePasswordLength, allowedEmails } from '../../validators';
 import LoginForm from '../LoginForm';
 // import Container from 'react-bootstrap/Container';
 // import Row from 'react-bootstrap/Row';
@@ -13,30 +13,32 @@ import { withRouter } from 'react-router-dom';
 
 
 
-
+export const composeValidators = (...validators) => value => validators.reduce((error, validator) => error ||  validator(value),  undefined);
 class RegisterForm extends Component {
-onSubmbit(e, newPage,values) {
-  
-  console.log("Vrednosti",values);
+sleep = ms => new Promise(res => setTimeout(res, ms));
+
+newPage = (newPage) => {
+this.props.history.push('/login');
+};
+
+onSubmit = async (values, novastrana) => {
+
+await this.sleep(300);
+console.log("values", values);
+this.newPage(novastrana);
   
 };
 
-// newPage = (newPage) => {
-//   this.props.history.push('/login');
-// };
-
- render(){
-  const composeValidators = (...validators) => value => validators.reduce((error, validator) => error ||  validator(value),  undefined);
-  
-        return (
+render(){
+       return (
             <div>
             <h1>🏁  Register Form</h1>
             <br>
             </br>
             <br></br>
               <Form 
-                onSubmit={this.onSubmbit}
-                render={ ( { handleSubmit}) => (
+                onSubmit={this.onSubmit.bind(this)}
+                render={ ( { handleSubmit, values, submitting, meta }) => (
                <form onSubmit={handleSubmit}>
                        <Field
                         name="firstName"
@@ -51,7 +53,7 @@ onSubmbit(e, newPage,values) {
                         component={InputField}
                         hintText="Last Name"
                         floatingLabelText="Last Name"
-                        validate={required}
+                        validate={required} 
                         type="text"
                         />
                        <Field 

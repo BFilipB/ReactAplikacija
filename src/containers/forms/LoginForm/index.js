@@ -8,10 +8,13 @@ import { Form, Field } from 'react-final-form';
 import {InputPassword, SubmitButtonLogin, InputField } from '../../../components/InputFields';
 import Button from 'react-bootstrap/Button'
 import { composeValidators } from '../RegisterForm/'
+import Spinner from 'react-bootstrap/Spinner'
 
+import { authLogin } from '../../../actions/auth';
+import { connect } from 'react-redux'; 
 class LoginForm extends Component {
-  onSubbmit() {
-   
+  onSubbmit(values) {
+    this.props.authLogin(values);
   }
   
   
@@ -19,6 +22,8 @@ class LoginForm extends Component {
         return(
           <div>
          <h1>🏁 Login Form</h1>
+              
+              
               <Form 
                 onSubmit={this.onSubbmit.bind(this)}
                 render= { ( { handleSubmit, form, submitting, pristine, values, valid, e }) => (
@@ -42,10 +47,19 @@ class LoginForm extends Component {
 
                 <Button size="lg" type="submit">Login</Button>
                   </form>
-                  ) } />  
+              ) } />  
           </div>
         )
     }
 }
 
-export default LoginForm;
+const mapStateToProps = state => {
+  return {
+    user: state.auth,
+    lang: state.lang
+  }
+}
+
+
+
+export default connect(mapStateToProps,{authLogin})(LoginForm);

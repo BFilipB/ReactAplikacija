@@ -10,10 +10,12 @@ import { InputPassword, InputEmail, InputUsername, InputFirstName, InputLastName
 import Button from 'react-bootstrap/Button'
 import { metaProperty } from '@babel/types';
 import { withRouter } from 'react-router-dom';
-
-
+import { connect } from 'react-redux';
+import { authSignUp } from '../../../actions/auth';
 
 export const composeValidators = (...validators) => value => validators.reduce((error, validator) => error ||  validator(value),  undefined);
+
+
 class RegisterForm extends Component {
 sleep = ms => new Promise(res => setTimeout(res, ms));
 
@@ -25,8 +27,10 @@ onSubmit = async (values, novastrana) => {
 
 await this.sleep(300);
 console.log("values", values);
+this.props.authSignUp(values);
 this.newPage(novastrana);
-  
+
+
 };
 
 render(){
@@ -92,7 +96,13 @@ render(){
     
 };
 }
+const mapStateToProps = state => {
+  return {
+    user: state.auth,
+    lang: state.lang
+  }
+}
 
 
 
-export default RegisterForm;
+export default connect(mapStateToProps,{authSignUp})(RegisterForm);

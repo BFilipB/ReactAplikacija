@@ -51,7 +51,7 @@ export const authLogin = (credentials) => dispatch =>{
         bodyFormData.set("client_secret", django_client_secret);
         bodyFormData.set("grant_type", "password");
         const response = con.post(
-        'http://127.0.0.1:8000/auth/token', 
+        'http://127.0.0.1:8000/auth/token/', 
             bodyFormData
         )
         .then(res => {
@@ -70,7 +70,7 @@ export const authLogin = (credentials) => dispatch =>{
 export const authSignUp = (credentials) => dispatch  => {
         dispatch(authStart());
         const response =  con.post(
-            'http://127.0.0.1:8000/api/users',
+            'http://127.0.0.1:8000/api/users/',
             credentials
        
        
